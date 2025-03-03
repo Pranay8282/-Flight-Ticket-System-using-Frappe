@@ -1,5 +1,5 @@
 import frappe
-from frappe.model.document import Document
+# from frappe.model.document import Document
 
 class AirplaneTicket(Document):
     def validate(self):
