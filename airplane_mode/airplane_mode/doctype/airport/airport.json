@@ -35,7 +35,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-03 13:09:16.567494",
+ "modified": "2025-03-03 17:38:59.542594",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport",
@@ -55,7 +55,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "city"
 }
