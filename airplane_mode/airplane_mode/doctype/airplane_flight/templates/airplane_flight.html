@@ -1,0 +1,44 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+    <h2 style="text-align: center; color: #2c3e50;">Flight Details</h2>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: #2c3e50; color: white;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Flight Name</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Airplane</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Source</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Destination</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Departure Date</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Departure Time</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.name }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.airplane or "Not Available" }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.source_airport_code }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.destination_airport_code }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.date_of_departure or "Not Available" }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">
+                    {% if flight.time_of_departure %}
+                        {{ flight.time_of_departure.seconds // 3600 }}:{% if (flight.time_of_departure.seconds // 60) % 60 < 10 %}0{% endif %}{{ (flight.time_of_departure.seconds // 60) % 60 }}
+                    {% else %}
+                        Not Available
+                    {% endif %}
+                </td>
+                <td style="padding: 10px; border: 1px solid #ddd;">
+                    {% if flight.duration %}
+                        {% set hours = (flight.duration // 3600)|int %}
+                        {% set minutes = ((flight.duration // 60) % 60)|int %}
+                        {{ hours }} hours {{ minutes }} minutes
+                    {% else %}
+                        Not Available
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

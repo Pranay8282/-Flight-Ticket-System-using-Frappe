@@ -1,0 +1,15 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<h1 class="text-xl font-bold">Available Flights</h1>
+
+<ul>
+    {% for flight in frappe.get_all("Airplane Flight", fields=["name", "airplane", "departure_date"]) %}
+    <li>
+        <strong>{{ flight.airplane }}</strong> - {{ flight.departure_date }}
+        <a href="/route/{{ flight.name }}">View Details</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

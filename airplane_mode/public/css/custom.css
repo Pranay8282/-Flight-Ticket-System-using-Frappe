@@ -1,0 +1,37 @@
+.flight-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.flight-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.flight-card h3 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.route {
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.datetime {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.view-flight {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-flight:hover {
+    text-decoration: underline;
+}
