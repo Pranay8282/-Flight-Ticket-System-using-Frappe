@@ -61,3 +61,11 @@ class AirplaneFlight(WebsiteGenerator):
         frappe.msgprint("Flight status has been set to Completed.", alert=True)
         
 	
+import frappe
+
+def get_context(context):
+    if frappe.form_dict.name:
+        flight = frappe.get_doc("Airplane Flight", frappe.form_dict.name)
+        context.flight = flight  # Ensure flight is passed to the template
+    else:
+        frappe.throw("Flight not found!")
