@@ -3,6 +3,7 @@ from frappe.model.document import Document
 import random
 
 class AirplaneTicket(Document):
+    
 
     # def before_submit(self):
     #     """Prevent submission if status is not 'Boarded'."""
