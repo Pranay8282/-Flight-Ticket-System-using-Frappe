@@ -1,0 +1,28 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "creation": "2025-03-05 11:34:23.048578",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Airplane Flight",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Add your message here</p>\n",
+ "message_type": "Plain Text",
+ "modified": "2025-03-05 11:41:58.044771",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Flight Is Created",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "Manufacturing User"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "New Flght created {{doc.airplane}} at {{doc.date_of_departure}}"
+}

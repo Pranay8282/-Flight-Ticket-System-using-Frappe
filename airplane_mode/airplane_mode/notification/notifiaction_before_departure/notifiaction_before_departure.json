@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "",
+ "creation": "2025-03-05 11:17:43.533256",
+ "date_changed": "date_of_departure",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Airplane Flight",
+ "enabled": 1,
+ "event": "Days Before",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Add your message here</p>\n",
+ "message_type": "Markdown",
+ "modified": "2025-03-05 12:02:21.506713",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Notifiaction Before Departure",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "Maintenance User"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Departs in 24 hours! - Flight {{ doc.airplane }} ({{ doc.date_of_departure }})"
+}
