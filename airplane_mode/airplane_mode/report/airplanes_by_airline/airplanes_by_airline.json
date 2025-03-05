@@ -1,0 +1,47 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "airline",
+   "fieldtype": "Link",
+   "label": "Airline",
+   "width": 0
+  },
+  {
+   "fieldname": " Flight Number",
+   "fieldtype": "Check",
+   "label": "Flight Number",
+   "width": 0
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Data",
+   "label": "Capacity",
+   "width": 0
+  }
+ ],
+ "creation": "2025-03-05 17:15:55.621479",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letterhead": null,
+ "modified": "2025-03-05 17:22:21.402082",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplanes by Airline",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Airplane",
+ "report_name": "Airplanes by Airline",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}
