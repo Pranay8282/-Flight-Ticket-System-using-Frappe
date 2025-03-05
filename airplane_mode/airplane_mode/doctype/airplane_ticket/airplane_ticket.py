@@ -4,10 +4,10 @@ import random
 
 class AirplaneTicket(Document):
 
-    def before_submit(self):
-        """Prevent submission if status is not 'Boarded'."""
-        if self.status != "Boarded":
-            frappe.throw("You can only submit the Airplane Ticket if the status is 'Boarded'.")
+    # def before_submit(self):
+    #     """Prevent submission if status is not 'Boarded'."""
+    #     if self.status != "Boarded":
+    #         frappe.throw("You can only submit the Airplane Ticket if the status is 'Boarded'.")
 
     def autoname(self):
         """Generate a unique name based on Flight, Source & Destination Airport, and Ticket Number"""
@@ -26,9 +26,11 @@ class AirplaneTicket(Document):
         return count + 1  # Increment by 1 for the new entry
 
     def validate(self):
+        """Validation before saving the record"""
         self.calculate_total_amount()
         self.remove_duplicate_add_ons()
-        self.assign_seat()
+        self.assign_seat_if_needed()
+        self.check_flight_capacity()  # Check capacity before saving
 
     def calculate_total_amount(self):
         """Calculates Total Amount = Flight Price + Sum of Add-on Amounts"""
@@ -47,9 +49,30 @@ class AirplaneTicket(Document):
 
         self.set("add_ons", cleaned_add_ons)
 
+    def assign_seat_if_needed(self):
+        """Auto-assign a random seat from available ones if not already assigned"""
+        if not self.seat:  # If no seat is assigned yet
+            self.assign_seat()
+
     def assign_seat(self):
-        """Auto-assign a random seat from available ones"""
+        """Assign a random seat from available ones"""
         available_seats = [
             f"{row}{col}" for row in range(1, 31) for col in "ABCDEF"
         ]
-        self.seat = random.choice(available_seats)
+        self.seat = random.choice(available_seats) 
+
+    def check_flight_capacity(self):
+        """Prevents creation of a new Airplane Ticket if the number of tickets exceeds airplane's capacity"""
+        # Fetch the Airplane object using the flight's name (flight is a string, so we need to get the associated airplane)
+        flight_doc = frappe.get_doc("Airplane Flight", self.flight)
+        airplane = frappe.get_doc("Airplane", flight_doc.airplane)  # Assuming 'airplane' field links to the Airplane doctype
+
+    # Get the capacity of the airplane
+        airplane_capacity = airplane.capacity
+
+    # Get the number of tickets already booked for the flight
+        booked_ticket_count = frappe.db.count("Airplane Ticket", filters={"flight": self.flight, "status": "Booked"})
+
+    # Check if booked tickets exceed the airplane's capacity
+        if booked_ticket_count >= airplane_capacity:
+            frappe.throw(f"Cannot create ticket. The number of booked tickets for this flight ({self.flight}) has exceeded the airplane's capacity ({airplane_capacity} seats).")

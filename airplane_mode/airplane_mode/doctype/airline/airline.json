@@ -8,7 +8,9 @@
  "field_order": [
   "founding_year",
   "customer_care_number",
-  "headquarters"
+  "headquarters",
+  "website",
+  "airline_logo"
  ],
  "fields": [
   {
@@ -29,16 +31,30 @@
    "in_list_view": 1,
    "label": "Headquarters",
    "reqd": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "url"
+  },
+  {
+   "fieldname": "airline_logo",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Airline Logo"
   }
  ],
+ "image_field": "airline_logo",
  "index_web_pages_for_search": 1,
  "links": [
   {
+   "group": "arilne",
    "link_doctype": "Airplane",
    "link_fieldname": "airline"
   }
  ],
- "modified": "2025-03-03 15:36:36.036277",
+ "modified": "2025-03-05 16:04:40.608416",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airline",

@@ -1,7 +1,7 @@
 {
  "attach_print": 0,
  "channel": "System Notification",
- "condition": "",
+ "condition": "doc.status==\"Scheduled\"\n",
  "creation": "2025-03-05 11:17:43.533256",
  "date_changed": "date_of_departure",
  "days_in_advance": 1,
@@ -14,7 +14,7 @@
  "is_standard": 1,
  "message": "<p>Add your message here</p>\n",
  "message_type": "Markdown",
- "modified": "2025-03-05 12:02:21.506713",
+ "modified": "2025-03-05 12:07:03.546142",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Notifiaction Before Departure",

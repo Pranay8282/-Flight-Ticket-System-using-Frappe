@@ -1,33 +1,30 @@
 {
  "attach_print": 0,
- "channel": "Email",
+ "channel": "System Notification",
  "condition": "doc.status == \"Scheduled\" and doc.date_of_departure == frappe.utils.add_days(frappe.utils.nowdate(), 1)\n",
- "creation": "2025-03-05 10:58:10.323350",
+ "creation": "2025-03-05 12:18:10.206756",
  "date_changed": "date_of_departure",
  "days_in_advance": 1,
  "docstatus": 0,
  "doctype": "Notification",
  "document_type": "Airplane Flight",
- "enabled": 0,
+ "enabled": 1,
  "event": "Days Before",
  "idx": 0,
  "is_standard": 1,
  "message": "<p>Add your message here</p>\n",
  "message_type": "Markdown",
- "modified": "2025-03-05 11:16:46.675914",
+ "modified": "2025-03-05 12:26:49.880231",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Departure Notification",
  "owner": "Administrator",
  "recipients": [
   {
-   "condition": "",
-   "receiver_by_role": "All"
+   "receiver_by_role": "Administrator"
   }
  ],
- "send_system_notification": 1,
- "send_to_all_assignees": 1,
- "sender": "System",
- "sender_email": "system@example.com",
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
  "subject": "Departs in 24 hours! - Flight {{ doc.airplane }} ({{ doc.date_of_departure }})"
 }
