@@ -52,7 +52,7 @@ class AirplaneFlight(WebsiteGenerator):
         else:
             last_seq = 1
 
-        return str(last_seq).zfill(4)
+        return str(last_seq).zfill(5)
 
     def on_submit(self):
         """Set the status of the flight to 'Completed' after submission."""
