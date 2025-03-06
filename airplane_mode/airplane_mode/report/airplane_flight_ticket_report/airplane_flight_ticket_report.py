@@ -1,14 +1,29 @@
 import frappe
 
 def execute(filters=None):
-    # Fetching records from the Airplane Ticket Doctype
-    tickets = frappe.get_all(
-        'Airplane Ticket',  # Doctype name
-        fields=['name']  # Fetching the 'name' field
-    )
-    
-    if not tickets:
-        return [{'message': 'No tickets found'}]
-    
-    # Returning the tickets fetched
-    return tickets
+    columns, data = [
+        {
+            "label": "Name",
+            "fieldname": "name",
+            "fieldtype": "Link",
+            "options": "Airplane Flight Ticket",
+            "width": 150
+        },
+    ], [
+        {
+            "name": "T001"
+        },
+        {
+            "name": "T002"
+        },
+        {
+            "name": "T003"
+        },
+        {
+            "name": "T004"
+        },
+        {
+            "name": "T005"
+        }
+    ]
+    return columns, data

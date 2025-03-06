@@ -99,7 +99,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_sefr",
+   "fieldname": "section_break_sefr",   
    "fieldtype": "Section Break"
   },
   {
