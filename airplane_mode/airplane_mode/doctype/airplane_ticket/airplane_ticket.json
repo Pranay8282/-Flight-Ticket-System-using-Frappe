@@ -8,6 +8,7 @@
  "field_order": [
   "passenger",
   "status",
+  "gate_number",
   "column_break_ofku",
   "flight",
   "amended_from",
@@ -162,12 +163,20 @@
    "label": "Duration Of Flight",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fetch_from": "flight.gate_number",
+   "fieldname": "gate_number",
+   "fieldtype": "Select",
+   "label": "Gate Number",
+   "options": "A1\nB2\nC3",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-06 12:43:42.968803",
+ "modified": "2025-03-07 16:03:52.910940",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
