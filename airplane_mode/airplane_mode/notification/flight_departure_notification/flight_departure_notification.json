@@ -14,14 +14,14 @@
  "is_standard": 1,
  "message": "<p>Add your message here</p>\n",
  "message_type": "Markdown",
- "modified": "2025-03-05 12:26:49.880231",
+ "modified": "2025-03-07 17:41:07.627686",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Departure Notification",
  "owner": "Administrator",
  "recipients": [
   {
-   "receiver_by_role": "Administrator"
+   "receiver_by_role": "Fleet Manager"
   }
  ],
  "send_system_notification": 0,
