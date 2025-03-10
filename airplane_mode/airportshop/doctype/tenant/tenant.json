@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:tenant_name",
  "creation": "2025-03-10 11:44:41.829972",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,7 +9,6 @@
   "tenant_name",
   "email",
   "phone_number",
-  "shop",
   "column_break_bfcy",
   "status",
   "address"
@@ -17,7 +17,8 @@
   {
    "fieldname": "tenant_name",
    "fieldtype": "Data",
-   "label": "Tenant Name"
+   "label": "Tenant Name",
+   "unique": 1
   },
   {
    "fieldname": "email",
@@ -43,20 +44,15 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Active\nInactive"
-  },
-  {
-   "fieldname": "shop",
-   "fieldtype": "Link",
-   "label": "Shop",
-   "options": "Shop"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 11:51:31.472176",
+ "modified": "2025-03-10 14:36:47.253040",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Tenant",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

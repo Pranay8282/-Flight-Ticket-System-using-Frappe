@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:lead_name",
  "creation": "2025-03-10 12:21:18.736099",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -18,7 +19,8 @@
   {
    "fieldname": "lead_name",
    "fieldtype": "Data",
-   "label": "Lead Name"
+   "label": "Lead Name",
+   "unique": 1
   },
   {
    "fieldname": "email",
@@ -39,7 +41,8 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
-   "label": "Status"
+   "label": "Status",
+   "options": "Interested\nNot Interested\nContacted"
   },
   {
    "fieldname": "column_break_ihmo",
@@ -57,10 +60,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 12:25:02.523792",
+ "modified": "2025-03-10 14:32:01.723559",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Shop Lead",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

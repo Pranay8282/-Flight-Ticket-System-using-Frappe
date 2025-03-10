@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:contract_number",
  "creation": "2025-03-10 11:56:35.279836",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -103,10 +104,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 12:05:01.474358",
+ "modified": "2025-03-10 12:52:51.862260",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "ShopLeaseAgreement",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

@@ -1,12 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:PE-.{####}",
  "creation": "2025-03-10 12:11:01.225506",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "payment_date",
-  "amountpaid",
+  "amount_paid",
   "contract",
   "column_break_zdqq",
   "payment_status",
@@ -19,11 +20,6 @@
    "fieldname": "payment_date",
    "fieldtype": "Date",
    "label": "Payment Date"
-  },
-  {
-   "fieldname": "amountpaid",
-   "fieldtype": "Currency",
-   "label": "Amount Paid"
   },
   {
    "fieldname": "payment_method",
@@ -57,14 +53,20 @@
   {
    "fieldname": "column_break_zdqq",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 12:19:49.865201",
+ "modified": "2025-03-10 14:42:15.841965",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Rent Payment",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

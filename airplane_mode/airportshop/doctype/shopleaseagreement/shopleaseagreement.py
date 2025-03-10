@@ -1,11 +1,22 @@
 # Copyright (c) 2025, Sanskar and contributors
 # For license information, please see license.txt
 
+# import frappe
 import frappe
+from frappe.model.document import Document
+
+class ShopLeaseAgreement(Document):
+    def before_insert(self):
+        self.contract_number = generate_contract_number()
 
 def generate_contract_number():
     # Fetch the last contract document
-    last_contract = frappe.get_all('Contract', fields=["contract_number"], limit_page_length=1, order_by="contract_number desc")
+    last_contract = frappe.get_all(
+        'ShopLeaseAgreement', 
+        fields=["contract_number"], 
+        limit_page_length=1, 
+        order_by="contract_number desc"
+    )
     
     # If no contracts exist, start from 1000 (or any desired number)
     if not last_contract:
@@ -20,8 +31,3 @@ def generate_contract_number():
     
     # Return the new contract number with the prefix 'C'
     return f'C{new_number}'
-
-# Trigger the function before inserting a new Contract record
-def before_insert(doc, method):
-    # Assign the auto-generated contract number
-    doc.contract_number = generate_contract_number()
