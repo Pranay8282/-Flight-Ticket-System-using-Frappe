@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:RR-{########}",
  "creation": "2025-03-10 14:40:50.080592",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -23,15 +24,18 @@
   {
    "fieldname": "shop",
    "fieldtype": "Link",
-   "label": "Shop",
-   "options": "Shop"
+   "label": "Receipt payment ",
+   "options": "Rent Payment"
   },
   {
+   "fetch_from": "shop.amount_paid",
    "fieldname": "amount_paid",
    "fieldtype": "Currency",
-   "label": "Amount Paid"
+   "label": "Amount Paid",
+   "read_only": 1
   },
   {
+   "fetch_from": "shop.payment_date",
    "fieldname": "payment_date",
    "fieldtype": "Date",
    "label": "Payment Date"
@@ -55,10 +59,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 14:45:46.717226",
+ "modified": "2025-03-10 16:25:53.052360",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Rent Receip",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
