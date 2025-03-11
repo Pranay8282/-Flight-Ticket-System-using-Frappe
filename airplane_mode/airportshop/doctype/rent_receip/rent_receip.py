@@ -6,31 +6,31 @@ from frappe.model.document import Document
 from frappe.utils import get_datetime
 
 class RentReceip(Document):
-    
-    def before_insert(self):
-        # Generate receipt number before the document is inserted
-        self.receipt_number = self.generate_receipt_number()
-
     def generate_receipt_number(self):
-        # Get the current year in YYYY format
-        current_year = get_datetime().strftime('%Y')
-        
-        # Define the prefix for the receipt number
-        prefix = "RCP-" + current_year
-        
-        # Fetch the last receipt number for the current year
-        last_receipt = frappe.get_all('Rent Receip', filters={'receipt_number': ['like', f'{prefix}%']}, 
-                                      fields=['receipt_number'], order_by='receipt_number desc', limit=1)
-        
-        # If there is a last receipt number, extract the number and increment it
-        if last_receipt:
-            last_number = int(last_receipt[0]['receipt_number'].split('-')[-1])  # Extract the last number
-            new_number = last_number + 1
-        else:
-            # If no receipts found for the current year, start from 1
-            new_number = 1
-        
-        # Format the new receipt number with leading zeros to a fixed length
-        receipt_number = f"{prefix}-{str(new_number).zfill(5)}"
-        
+        """
+    Generates the receipt number in the format:
+    RR-{tenant}-{payment_date}-{serial_number}
+    """
+        tenant = self.tenant  # Get tenant name from the doc
+        payment_date = self.payment_date.strftime('%Y-%m-%d')  # Get payment date in YYYY-MM-DD format
+
+    # Base part of the receipt number (RR-{tenant}-{payment_date})
+        base_receipt_number = f"RR-{tenant}-{payment_date}"
+
+    # Set a naming series for the serial number (##### is 5 digits)
+        naming_series = "#####"
+
+    # Generate the serial number using the getseries method
+        serial_number = frappe.model.naming.getseries(naming_series,5)
+
+    # Combine the base receipt number and serial number
+        receipt_number = f"{base_receipt_number}-{serial_number}"
+
         return receipt_number
+
+    def before_insert(self):
+        """
+    This function is called before saving the document to generate the receipt number.
+    """
+        self.receipt_number = self.generate_receipt_number()
+        self.name1=self.receipt_number

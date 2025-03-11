@@ -1,1 +1,1 @@
-__version__ = "0.0.1"
+airplane_mode__version__ = "0.0.1"

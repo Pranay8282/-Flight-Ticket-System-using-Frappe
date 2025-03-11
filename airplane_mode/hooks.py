@@ -255,3 +255,8 @@ app_include_css = "/assets/airplane_mode/css/custom.css"
 #     }
 # }
 
+scheduler_events = {
+    "cron": {
+        "0 9 1 * *": ["airportshop.api.send_rent_due_reminder"]
+    }
+}

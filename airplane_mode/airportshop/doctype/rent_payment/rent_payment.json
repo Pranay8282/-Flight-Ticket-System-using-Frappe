@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:receipt_number",
  "creation": "2025-03-10 15:35:18.820993",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -11,6 +12,7 @@
   "column_break_hjao",
   "payment_status",
   "payment_method",
+  "reciept",
   "receipt_number"
  ],
  "fields": [
@@ -53,16 +55,23 @@
   {
    "fieldname": "receipt_number",
    "fieldtype": "Data",
-   "label": "Receipt Number",
-   "read_only": 1
+   "label": "Number",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "reciept",
+   "fieldtype": "Attach",
+   "label": "Reciept"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 16:32:08.342161",
+ "modified": "2025-03-11 16:05:41.470867",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Rent Payment",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
