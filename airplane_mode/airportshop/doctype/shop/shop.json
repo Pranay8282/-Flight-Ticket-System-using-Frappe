@@ -6,7 +6,6 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "shop_number",
   "shop_name",
   "area",
   "rent_due_date",
@@ -19,12 +18,6 @@
   "contract_details"
  ],
  "fields": [
-  {
-   "fieldname": "shop_number",
-   "fieldtype": "Data",
-   "label": "Shop Number",
-   "unique": 1
-  },
   {
    "fieldname": "shop_name",
    "fieldtype": "Data",
@@ -81,7 +74,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-10 13:00:58.962160",
+ "modified": "2025-03-11 17:12:41.758671",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Shop",

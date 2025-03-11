@@ -12,12 +12,12 @@ class RentReceip(Document):
     RR-{tenant}-{payment_date}-{serial_number}
     """
         tenant = self.tenant  # Get tenant name from the doc
-        payment_date = self.payment_date.strftime('%Y-%m-%d')  # Get payment date in YYYY-MM-DD format
+        payment_date = self.payment_date.strftime('%Y-%m-%d')  
 
-    # Base part of the receipt number (RR-{tenant}-{payment_date})
+    
         base_receipt_number = f"RR-{tenant}-{payment_date}"
 
-    # Set a naming series for the serial number (##### is 5 digits)
+   
         naming_series = "#####"
 
     # Generate the serial number using the getseries method
