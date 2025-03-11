@@ -246,15 +246,12 @@ app_license = "mit"
 app_include_css = "/assets/airplane_mode/css/custom.css"
 
 # hooks.py in your app (e.g., AirportShop)
+# hooks.py
 
-doc_events = {
-    "Shop": {
-        "after_insert": "airplane_mode.airportshop.doctype.shop.shop.create_airport_shop_transition",  # Trigger after creating a shop
-        "after_update": "airplane_mode.airportshop.doctype.shop.shop.update_airport_shop_counts",  # Trigger after updating a shop
-        "on_trash": "airplane_mode.airportshop.doctype.shop.shop.update_airport_shop_counts"  # Trigger after deleting a shop
-    },
-    "Airport": {
-        "after_insert": "airplane_mode.airportshop.doctype.shop.shop.update_airport_shop_counts",  # Trigger after creating an airport
-        "after_update": "airplane_mode.airportshop.doctype.shop.shop.update_airport_shop_counts"  # Trigger after updating an airport
-    }
-}
+# doc_events = {
+#     "Shop": {
+#         "after_insert": "airplane_mode.airplane_mode.doctype.airport.airport.update_airport_shop_counts",
+#         "after_save": "airplane_mode.airplane_mode.doctype.airport.airport.update_airport_shop_counts",
+#     }
+# }
+
