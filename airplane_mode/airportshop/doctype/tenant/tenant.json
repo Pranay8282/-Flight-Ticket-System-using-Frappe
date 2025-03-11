@@ -20,7 +20,7 @@
    "label": "Tenant Name",
    "unique": 1
   },
-  {
+  { 
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email"
@@ -50,7 +50,7 @@
  "links": [],
  "modified": "2025-03-10 14:36:47.253040",
  "modified_by": "Administrator",
- "module": "AirportShop",
+ "module": "AirportShop", 
  "name": "Tenant",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
