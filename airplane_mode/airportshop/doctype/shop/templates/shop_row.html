@@ -1,0 +1,20 @@
+<div class="shop-details" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25); margin: 20px auto; width: 90%; max-width: 700px; color: #fff; font-family: 'Arial', sans-serif;">
+    <h2 style="font-size: 30px; margin-bottom: 20px; font-weight: 700; text-align: center; color: #ffcc00;">
+		<a href="/route/{{ doc.shop_name | replace(' ', '-') }}" style="color: #2d38d8; text-decoration: none;">
+			{{ doc.shop_name }}
+		</a>							
+    </h2>
+
+   
+
+    <!-- Conditional Button: Show if status is "Available" -->
+    {% if doc.status == "Available" %}
+        <a href="/shop-lead/new?shop={{ doc.name }}&status=Interested" class="lead-btn" style="display: inline-block; background-color: #ffcc00; color: #ffffff; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-size: 18px; font-weight: 600; transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; margin-top: 20px; text-align: center; cursor: pointer; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);">
+            I'm Interested
+        </a>
+    {% else %}
+        <p style="font-size: 18px; color: rgba(255, 255, 255, 0.9); margin-top: 20px; text-align: center; font-weight: bold;">
+            <span style="color: #ff0000;">This shop is currently occupied.</span>
+        </p>
+    {% endif %}
+</div>

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "format:SHP-{####}",
  "creation": "2025-03-10 11:40:52.082567",
@@ -9,13 +10,16 @@
   "shop_name",
   "area",
   "rent_due_date",
+  "shop_type",
   "column_break_nwxw",
   "status",
   "tenant",
   "airport",
   "shop_code",
   "section_break_ebxr",
-  "contract_details"
+  "contract_details",
+  "is_publish",
+  "route"
  ],
  "fields": [
   {
@@ -70,11 +74,33 @@
   {
    "fieldname": "section_break_ebxr",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_publish",
+   "fieldtype": "Check",
+   "label": "is publish"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Route"
+  },
+  {
+   "fieldname": "shop_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Shop Type",
+   "options": "Shop Type"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_publish",
  "links": [],
- "modified": "2025-03-11 17:12:41.758671",
+ "modified": "2025-03-12 12:15:30.659931",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Shop",
@@ -94,6 +120,7 @@
    "write": 1
   }
  ],
+ "route": "route",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

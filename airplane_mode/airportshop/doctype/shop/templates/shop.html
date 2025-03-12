@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ doc.shop_name }}</title>
+    <style>
+        /* Importing Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* General Page Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Card Container with Glassmorphism */
+        .shop-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Shop Name */
+        h2 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* Details Styling */
+        .detail {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail i {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #ffcc00;
+        }
+
+        /* "I'm Interested" Button */
+        .lead-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 24px;
+            font-size: 16px;
+            color: white;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0px 5px 12px rgba(255, 126, 95, 0.3);
+        }
+
+        .lead-btn:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 16px rgba(255, 126, 95, 0.4);
+        }
+
+        /* Status Text */
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .available {
+            color: #155724;
+            background-color: #d4edda;
+        }
+
+        .occupied {
+            color: #721c24;
+            background-color: #f8d7da;
+        }
+
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="shop-container">
+    <h2>{{ doc.shop_name }}</h2>
+    <p class="detail"><i class="fas fa-ruler-combined"></i> <strong>Area:</strong> {{ doc.area }} sq ft</p>
+    <p class="detail"><i class="fas fa-plane"></i> <strong>Airport:</strong> {{ doc.airport }}</p>
+    <p class="detail"><i class="fas fa-calendar-alt"></i> <strong>Rent Due Date:</strong> {{ doc.rent_due_date }}</p>
+
+    {% if doc.status == "Available" %}
+        <p class="status available">✅ Available for Rent</p>
+        <a href="/shop-lead/new?shop={{ doc.name }}&status=Interested" class="lead-btn">💡 I'm Interested</a>
+    {% else %}
+        <p class="status occupied">🚫 Currently Occupied</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

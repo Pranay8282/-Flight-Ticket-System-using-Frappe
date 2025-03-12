@@ -1,7 +1,7 @@
 import frappe
-from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
 
-class Shop(Document):
+class Shop(WebsiteGenerator):
     def before_save(self):
         """This method will be triggered before saving the Shop document."""
         self.check_airport_link()
