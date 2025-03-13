@@ -1,7 +1,7 @@
 {
  "attach_print": 0,
  "channel": "System Notification",
- "condition": "doc.status == \"Scheduled\" and doc.date_of_departure == frappe.utils.add_days(frappe.utils.nowdate(), 1)\n",
+ "condition": "doc.status == \"Scheduled\" ",
  "creation": "2025-03-05 12:18:10.206756",
  "date_changed": "date_of_departure",
  "days_in_advance": 1,
@@ -14,7 +14,7 @@
  "is_standard": 1,
  "message": "<p>Add your message here</p>\n",
  "message_type": "Markdown",
- "modified": "2025-03-07 17:41:07.627686",
+ "modified": "2025-03-13 15:16:32.521480",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Departure Notification",
