@@ -1,90 +1,57 @@
 import frappe
-from frappe.desk.query_report import get_chart
 
 def execute(filters=None):
+    # Define columns to be displayed in the report
+    columns = [
+        {"fieldname": "airport", "label": "Airport", "fieldtype": "Data", "width": 150},
+        {"fieldname": "date", "label": "Date", "fieldtype": "Date", "width": 120},
+        {"fieldname": "total_revenue", "label": "Total Revenue", "fieldtype": "Float", "width": 150}
+    ]
+
     filters = filters or {}
 
-    # Initialize dictionary to store revenue by airline prefix
-    revenue_by_airline_prefix = {}
+    conditions = []
+    values = {}
 
-    try:
-        # Query to get relevant ticket data (only necessary fields)
-        tickets = frappe.get_all('Airplane Ticket', fields=['flight', 'total_amount'], filters=filters)
+    # Apply filter for airport
+    if filters.get("airport"):
+        conditions.append("airport = %(airport)s")
+        values["airport"] = filters["airport"]
 
-        # If no tickets are found, return an empty result
-        if not tickets:
-            return {
-                "columns": [],
-                "rows": [],
-                "chart": None
-            }
+    # Apply date range filter
+    if filters.get("from_date") and filters.get("to_date"):
+        conditions.append("departure_date BETWEEN %(from_date)s AND %(to_date)s")
+        values["from_date"] = filters["from_date"]
+        values["to_date"] = filters["to_date"]
 
-        # Process the ticket data
-        for ticket in tickets:
-            # Ensure that 'flight' is not empty or None
-            if ticket.get('flight'):
-                # Extract airline prefix (before the first hyphen '-')
-                airline_prefix = ticket['flight'].split('-')[0] if '-' in ticket['flight'] else ticket['flight']
-                
-                # Ensure 'total_amount' is a valid number
-                revenue = ticket.get('total_amount') or 0  # Default to 0 if total_amount is missing or None
-                
-                # Add revenue to the corresponding airline prefix
-                if airline_prefix not in revenue_by_airline_prefix:
-                    revenue_by_airline_prefix[airline_prefix] = 0
-                revenue_by_airline_prefix[airline_prefix] += revenue
-            else:
-                # Handle case where 'flight' is missing or invalid
-                frappe.log_error(f"Invalid or missing flight data for ticket: {ticket}")
+    where_clause = " AND ".join(conditions) if conditions else "1=1"
 
-        # Prepare columns for the report
-        columns = [
-            {"label": "Airline", "fieldname": "airline", "fieldtype": "Data", "width": 300},
-            {"label": "Revenue", "fieldname": "revenue", "fieldtype": "Currency", "width": 200}
-        ]
+    # Fetch the revenue data from the Airplane Ticket Doctype (or relevant table)
+    data = frappe.db.sql(f"""
+        SELECT airport, departure_date as date, SUM(flight_price) as total_revenue
+        FROM `tabAirplane Ticket`
+        WHERE {where_clause}
+        GROUP BY airport, departure_date
+        ORDER BY departure_date DESC
+    """, values, as_dict=True)
 
-        # Prepare rows for the report
-        rows = [[airline_prefix, revenue] for airline_prefix, revenue in revenue_by_airline_prefix.items()]
+    # Prepare data for chart
+    airports = list(set(row["airport"] for row in data))
+    dates = list(set(row["date"] for row in data))
 
-        # Add a total row for revenue
-        total_revenue = sum(revenue_by_airline_prefix.values())
-        rows.append(['Total', total_revenue])
+    datasets = []
+    for date in dates:
+        dataset_values = [next((row["total_revenue"] for row in data if row["airport"] == airport and row["date"] == date), 0) for airport in airports]
+        datasets.append({"name": str(date), "values": dataset_values})
 
-        # Prepare chart data (Pie chart)
-        chart_data = {
-            'labels': list(revenue_by_airline_prefix.keys()),  # Airline prefixes
-            'datasets': [{
-                'name': 'Revenue',
-                'values': list(revenue_by_airline_prefix.values())  # Corresponding revenue values
-            }]
-        }
+    # Create the chart
+    chart = {
+        "data": {
+            "labels": airports,
+            "datasets": datasets   
+        },
+        "type": "bar"  # You can use 'pie' or 'line' as well depending on the visualization you prefer
+    }
 
-        # Debugging: Log the chart data to ensure it's being structured correctly
-        print("Chart Data:", chart_data)
-
-        # Create the chart using get_chart (using Pie chart type, based on your second example)
-        chart = get_chart(
-            chart_type="pie",  # Pie chart type
-            chart_data=chart_data,  # Data for the chart
-            height=250,  # Height of the chart
-            title="Revenue by Airline"  # Title of the chart
-        )
-
-        # Debugging: Ensure chart is generated and check the result
-        print("Generated Chart:", chart)
-
-        # Return the columns, rows, and chart data
-        return {
-            "columns": columns,
-            "rows": rows,
-            "chart": chart
-        }
-
-    except Exception as e:
-        # Log any unexpected errors and return a failure response
-        frappe.log_error(f"Error executing report: {str(e)}")
-        return {
-            "columns": [],
-            "rows": [],
-            "chart": None
-        }
+    # Return columns, data, and chart
+    return columns, data, None, chart
