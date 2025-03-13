@@ -9,6 +9,7 @@
   "contract",
   "payment_date",
   "payment_amout",
+  "tenant_name",
   "column_break_hjao",
   "payment_status",
   "payment_method",
@@ -63,11 +64,17 @@
    "fieldname": "reciept",
    "fieldtype": "Attach",
    "label": "Reciept"
+  },
+  {
+   "fetch_from": "contract.tenant",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-11 16:05:41.470867",
+ "modified": "2025-03-13 17:11:23.014677",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Rent Payment",

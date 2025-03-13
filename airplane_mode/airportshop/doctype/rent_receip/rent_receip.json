@@ -17,10 +17,11 @@
  ],
  "fields": [
   {
+   "fetch_from": "shop.tenant_name",
    "fieldname": "tenant",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Tenant",
-   "options": "Tenant"
+   "read_only": 1
   },
   {
    "fieldname": "shop",
@@ -67,7 +68,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-11 16:23:14.887238",
+ "modified": "2025-03-13 17:13:42.618683",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Rent Receip",
