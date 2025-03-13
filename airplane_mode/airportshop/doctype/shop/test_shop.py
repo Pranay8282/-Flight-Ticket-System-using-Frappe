@@ -2,6 +2,7 @@
 # See license.txt
 
 # import frappe
+from frappe.chart import chart
 from frappe.tests.utils import FrappeTestCase
 
 
