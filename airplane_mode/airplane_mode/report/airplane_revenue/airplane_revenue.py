@@ -3,21 +3,20 @@ import frappe
 def execute(filters=None):
     filters = filters or {}
 
-    # Query to get the relevant data
+ 
     tickets = frappe.get_all('Airplane Ticket', fields=['flight', 'total_amount'], filters=filters)
     
-    # Debugging: Print ticket data to check if it's being fetched correctly
     print(tickets)
 
-    # Prepare a dictionary to store revenue by airline prefix
+
     revenue_by_airline_prefix = {}
 
     for ticket in tickets:
-        # Extract the airline prefix (before the first hyphen '-')
+
         airline_prefix = ticket['flight'].split('-')[0]
         revenue = ticket['total_amount']
         
-        # Debugging: Print the extracted airline prefix and revenue
+
         print(f"Airline Prefix: {airline_prefix}, Revenue: {revenue}")
 
         if airline_prefix not in revenue_by_airline_prefix:
@@ -25,27 +24,27 @@ def execute(filters=None):
         
         revenue_by_airline_prefix[airline_prefix] += revenue
     
-    # Prepare columns for the report
+
     columns = [
         {"label": "Airline", "fieldname": "airline", "fieldtype": "Data", "width": 300},
         {"label": "Revenue", "fieldname": "revenue", "fieldtype": "Currency", "width": 200}
     ]
 
-    # Prepare rows for the report
+
     rows = []
     for airline_prefix, revenue in revenue_by_airline_prefix.items():
         rows.append({"airline": airline_prefix, "revenue": revenue})
 
-    # Add a total row
+
     total_revenue = sum(revenue_by_airline_prefix.values())
     rows.append({"airline": "Total", "revenue": total_revenue})
 
-    # Prepare chart data (Donut chart)
+
     chart_data = {
-        'labels': list(revenue_by_airline_prefix.keys()),  # Properly get the keys (airline prefixes)
+        'labels': list(revenue_by_airline_prefix.keys()),  
         'datasets': [{
             'name': 'Revenue',
-            'values': list(revenue_by_airline_prefix.values())  # Properly get the values (revenues)
+            'values': list(revenue_by_airline_prefix.values())  
         }]
     }
 
@@ -56,7 +55,7 @@ def execute(filters=None):
         'title': 'Revenue by Airline'
     }
 
-    # Return the columns, rows, and chart data
+
     return {
         "columns": columns,
         "rows": rows,
