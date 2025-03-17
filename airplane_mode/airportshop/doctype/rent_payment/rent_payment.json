@@ -74,7 +74,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-13 17:11:23.014677",
+ "modified": "2025-03-17 10:29:37.190999",
  "modified_by": "Administrator",
  "module": "AirportShop",
  "name": "Rent Payment",
@@ -96,5 +96,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "tenant_name"
 }

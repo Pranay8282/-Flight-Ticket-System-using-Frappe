@@ -11,6 +11,8 @@ class RentReceip(Document):
     Generates the receipt number in the format:
     RR-{tenant}-{payment_date}-{serial_number}
     """
+        
+        
         tenant = self.tenant  # Get tenant name from the doc
         payment_date = self.payment_date.strftime('%Y-%m-%d')  
 
