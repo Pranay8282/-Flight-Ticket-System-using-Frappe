@@ -24,7 +24,7 @@ def execute(filters=None):
     chart = {
         "data": {
             "labels": labels,
-            "datasets": [{"name": "Revenue", "values": revenue_values}]
+            "datasets": [{"name": "Revenue", "values": revenue_values}] 
         },
         "type": "donut"  # Donut chart type
     }

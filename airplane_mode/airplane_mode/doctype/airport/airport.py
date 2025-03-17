@@ -8,7 +8,7 @@ class Airport(Document):
     def validate(self):
 
         if not self.name:
-            frappe.throw(_("Airport Code is required"))
+            frappe.throw(   ("Airport Code is required"))
 
     def on_update(self):
 
