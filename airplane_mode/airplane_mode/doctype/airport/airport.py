@@ -4,48 +4,34 @@ from frappe.model.document import Document
 class Airport(Document):
     def __init__(self, *args, **kwargs):
         super(Airport, self).__init__(*args, **kwargs)
-
+    
     def validate(self):
-
         if not self.name:
-            frappe.throw(   ("Airport Code is required"))
-
-    def on_update(self):
-
-        if not hasattr(self, "skip_shop_update"):
-            self.skip_shop_update = True
-            self.update_shop_counts()
-            del self.skip_shop_update
-
-    def update_shop_counts(self):
-        """Update the count of available and occupied shops linked to the airport."""
-
-        airport_code = self.code  
-
-
-        available_shops_count = frappe.db.sql("""
+            frappe.throw("Airport Code is required")
+    
+    # Remove on_update and update_shop_counts methods from here
+    
+    # Add these as properties instead
+    @property
+    def available_shops(self):
+        """Get real-time count of available shops."""
+        airport_code = self.code
+        result = frappe.db.sql("""
             SELECT COUNT(*) 
             FROM `tabShop` 
             WHERE airport = %s
             AND status = %s
         """, (airport_code, 'Available'), as_dict=False)
-
-
-        occupied_shops_count = frappe.db.sql("""
+        return result[0][0] if result else 0
+    
+    @property
+    def occupied_shops(self):
+        """Get real-time count of occupied shops."""
+        airport_code = self.code
+        result = frappe.db.sql("""
             SELECT COUNT(*) 
             FROM `tabShop` 
             WHERE airport = %s
             AND status = %s
         """, (airport_code, 'Occupied'), as_dict=False)
-
-
-        available_count = available_shops_count[0][0] if available_shops_count else 0
-        occupied_count = occupied_shops_count[0][0] if occupied_shops_count else 0
-
-
-        self.int_lnxb = available_count
-        self.occupied_shops = occupied_count
-
-
-        frappe.db.commit()
-
+        return result[0][0] if result else 0
