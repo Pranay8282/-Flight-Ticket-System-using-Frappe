@@ -33,10 +33,13 @@
    "label": "Contact Number"
   },
   {
-   "fieldname": "shop",
-   "fieldtype": "Link",
-   "label": "Shop",
-   "options": "Shop"
+    "fieldname": "shop",  
+    "fieldtype": "Link",
+    "label": "Shop",
+    "options": "Shop",
+    "filters": [
+      ["Shop", "status", "=", "Available"]
+    ]
   },
   {
    "fieldname": "status",

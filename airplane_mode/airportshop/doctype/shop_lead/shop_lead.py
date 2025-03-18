@@ -14,3 +14,24 @@ class ShopLead(Document):
         # Automatically set status to 'Interested' if empty
         if not self.status or self.status.strip() == "":
             self.status = "Interested"
+    
+
+    def after_save(self):
+        if self.shop and self.status == "Shop Allocated":
+            shop_doc = frappe.get_doc("Shop", self.shop)
+
+
+        if shop_doc.status != "Occupied":
+            shop_doc.status = "Occupied"
+            shop_doc.save()
+        
+        # Add a comment to the shop document
+        frappe.get_doc({
+            "doctype": "Comment",
+            "comment_type": "Info",
+            "reference_doctype": "Shop",
+            "reference_name": self.shop,
+            "content": f"Shop allocated to lead: {self.lead_name}"
+        }).insert()
+        
+        frappe.msgprint(f"Shop {self.shop} status updated to 'Occupied'")
