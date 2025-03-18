@@ -20,7 +20,7 @@ To install and set up the Airplane Mode App, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/airplane-mode.git
+git clone https://github.com/Pranay8282/Flight-Ticket-System-using-Frappe.git
 
 # Change directory
 cd airplane-mode
