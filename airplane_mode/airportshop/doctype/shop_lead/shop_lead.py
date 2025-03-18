@@ -25,7 +25,6 @@ class ShopLead(Document):
             shop_doc.status = "Occupied"
             shop_doc.save()
         
-        # Add a comment to the shop document
         frappe.get_doc({
             "doctype": "Comment",
             "comment_type": "Info",

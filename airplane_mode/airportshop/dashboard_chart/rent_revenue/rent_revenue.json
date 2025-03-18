@@ -1,0 +1,41 @@
+{
+ "based_on": "creation",
+ "chart_name": "Rent Revenue",
+ "chart_type": "Count",
+ "color": "#4F9DD9",
+ "creation": "2025-03-18 17:20:17.893505",
+ "currency": "INR",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Rent Payment",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[]",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "last_synced_on": "2025-03-18 17:24:40.671953",
+ "modified": "2025-03-18 17:28:42.289189",
+ "modified_by": "Administrator",
+ "module": "AirportShop",
+ "name": "Rent Revenue",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "Airport Authority Personnel"
+  },
+  {
+   "role": "Fleet Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Yearly",
+ "timeseries": 1,
+ "timespan": "Last Year",
+ "type": "Pie",
+ "use_report_chart": 0,
+ "value_based_on": "",
+ "y_axis": []
+}

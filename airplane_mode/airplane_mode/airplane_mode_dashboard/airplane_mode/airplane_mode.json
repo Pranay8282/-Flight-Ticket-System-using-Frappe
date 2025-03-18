@@ -1,0 +1,38 @@
+{
+ "cards": [
+  {
+   "card": "Airport Shops"
+  },
+  {
+   "card": "Airlines"
+  },
+  {
+   "card": "Airplane Tickets"
+  },
+  {
+   "card": "AIrports"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Revenue By Airports",
+   "width": "Half"
+  },
+  {
+   "chart": "Rent Revenue",
+   "width": "Half"
+  }
+ ],
+ "creation": "2025-03-18 17:07:55.415752",
+ "dashboard_name": "Airplane Mode",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 1,
+ "is_standard": 1,
+ "modified": "2025-03-18 17:20:20.455181",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplane Mode",
+ "owner": "Administrator"
+}

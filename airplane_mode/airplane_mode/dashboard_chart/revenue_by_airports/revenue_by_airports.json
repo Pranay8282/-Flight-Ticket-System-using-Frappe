@@ -1,0 +1,41 @@
+{
+ "based_on": "departure_date",
+ "chart_name": "Revenue By Airports",
+ "chart_type": "Count",
+ "color": "#449CF0",
+ "creation": "2025-03-18 17:07:01.303308",
+ "currency": "INR",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Airplane Ticket",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[]",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "last_synced_on": "2025-03-18 17:24:52.302238",
+ "modified": "2025-03-18 17:28:20.129801",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Revenue By Airports",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "Airport Authority Personnel"
+  },
+  {
+   "role": "Fleet Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Yearly",
+ "timeseries": 1,
+ "timespan": "Last Year",
+ "type": "Bar",
+ "use_report_chart": 0,
+ "value_based_on": "",
+ "y_axis": []
+}
