@@ -167,7 +167,7 @@
   {
    "fetch_from": "flight.gate_number",
    "fieldname": "gate_number",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Gate Number",
    "options": "A1\nB2\nC3",
    "read_only": 1
@@ -176,7 +176,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-07 16:03:52.910940",
+ "modified": "2025-03-19 10:25:40.122185",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",

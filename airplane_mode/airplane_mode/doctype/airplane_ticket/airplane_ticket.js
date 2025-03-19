@@ -24,6 +24,23 @@ frappe.ui.form.on("Airplane Ticket", {
 
 frappe.ui.form.on('Airplane Ticket', {
     refresh: function(frm) {
+        if (frm.doc.flight) {
+            frappe.db.get_value('Airplane Flight', frm.doc.flight, 'gate_number')
+                .then(r => {
+                    let gate_number = r.message.gate_number;
+                    if (gate_number && gate_number !== frm.doc.gate_number) {
+                        frm.set_value('gate_number', gate_number);
+                    }
+                });
+        }
+    }
+});
+
+
+
+
+frappe.ui.form.on('Airplane Ticket', {
+    refresh: function(frm) {
         if (!frm.doc.__islocal) {  // Only show button for saved records
             frm.add_custom_button(__('Assign Seat'), function() {
                 frappe.prompt([
