@@ -35,7 +35,7 @@ class AirplaneFlight(WebsiteGenerator):
         last_day = date_obj.strftime("%Y-%m-31")
 
         last_flight = frappe.db.sql(
-            """
+            """          
             SELECT name FROM `tabAirplane Flight`
             WHERE airplane=%s AND date_of_departure BETWEEN %s AND %s
             ORDER BY creation DESC LIMIT 1
@@ -47,7 +47,7 @@ class AirplaneFlight(WebsiteGenerator):
         if last_flight:
             last_name = last_flight[0]['name']
             last_seq = last_name.split("-")[-1]
-            last_seq = int(last_seq) + 1 if last_seq.isdigit() else 1
+            last_seq = int(last_seq) + 1 if last_seq.isdigit() else 1 
         else:
             last_seq = 1
 
